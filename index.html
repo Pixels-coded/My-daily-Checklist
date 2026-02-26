@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Checklist</title>
+</head>
+
+<body>
+    <main class="principal">
+        <h1 class="checklist">Checklist diária</h1>
+
+        <div class="progresso-container">
+    <div id="barraProgresso" class="barra-preenchimento"></div>
+    <span id="textoProgresso">0%</span>
+</div>
+
+     <button id="btnAbrirForm" class="btnadicionar" onclick="mostrarFormulario()">Adicionar nova tarefa</button>
+
+     <div id="formularioTarefa" class="form-container">
+        <input type="text" id="novaTarefa" placeholder="Digite a tarefa...">
+        
+        <div class="botoes-form">
+            <button class="btn-confirmar" onclick="confirmarTarefa()">Confirmar</button>
+            <button class="btn-cancelar" onclick="esconderFormulario()">Cancelar</button>
+        </div>
+    </div>
+
+     <button id="btnAbrirExclusao" class="btnexcluir" onclick="abrirModalExclusao()">Excluir Atividades</button>
+
+    <div id="modalExclusao" class="modal" style="display: none;">
+    <div class="modal-conteudo">
+        <h2>Selecione as atividades para excluir</h2>
+        <div id="listaParaExcluir"></div> <div class="botoes-modal">
+            <button class="btn-confirmar-exclusao" onclick="executarExclusao()">Excluir Selecionadas</button>
+            <button class="btn-cancelar" onclick="fecharModalExclusao()">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+    <div id="listaContainer" class="lista-container"></div>
+</div>
+
+
+    </main>
+<script src="app.js"></script>
+</body>
