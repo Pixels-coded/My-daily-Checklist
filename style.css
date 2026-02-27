@@ -185,7 +185,6 @@ body {
     margin-left: 1rem;
 }
 
-/* Feedback visual ao arrastar */
 .atividade-card.arrastando {
     opacity: 0.5;
     border: 2px dashed #000;
@@ -193,5 +192,5 @@ body {
 }
 
 .atividade-card {
-    cursor: grab; /* Indica que o card pode ser segurado */
+    cursor: grab;
 }

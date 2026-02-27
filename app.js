@@ -3,8 +3,6 @@ const btnAbrir = document.getElementById('btnAbrirForm');
 const inputTarefa = document.getElementById('novaTarefa');
 const lista = document.getElementById('listaContainer');
 
-// --- FUNÇÕES DE PERSISTÊNCIA (LocalStorage) ---
-
 function salvarNoLocalStorage() {
     const tarefas = [];
     document.querySelectorAll('.atividade-card').forEach(card => {
@@ -24,10 +22,8 @@ function carregarDoLocalStorage() {
             renderizarTarefa(t.texto, t.concluida);
         });
     }
-    atualizarProgresso(); // Garante que a barra comece correta
+    atualizarProgresso();
 }
-
-// --- FUNÇÕES DE INTERFACE ---
 
 function atualizarProgresso() {
     const totalTarefas = document.querySelectorAll('.atividade-card').length;
@@ -57,8 +53,6 @@ function esconderFormulario() {
     inputTarefa.value = "";
 }
 
-// --- LÓGICA DE TAREFAS ---
-
 function renderizarTarefa(texto, concluida = false) {
     const novoCard = document.createElement('div');
     novoCard.classList.add('atividade-card');
@@ -69,7 +63,6 @@ function renderizarTarefa(texto, concluida = false) {
 
     const checkbox = novoCard.querySelector('.check-custom');
     
-    // Salva sempre que o status do checkbox mudar
     checkbox.addEventListener('change', () => {
         atualizarProgresso();
         salvarNoLocalStorage();
@@ -85,13 +78,11 @@ function confirmarTarefa() {
         renderizarTarefa(texto);
         esconderFormulario(); 
         atualizarProgresso();
-        salvarNoLocalStorage(); // Salva após adicionar
+        salvarNoLocalStorage();
     } else {
         alert("Digite algo antes de confirmar!");
     }
 }
-
-// --- EXCLUSÃO ---
 
 let tarefasSelecionadasParaDeletar = [];
 
@@ -139,11 +130,9 @@ function executarExclusao() {
         tarefa.remove();
     });
 
-    salvarNoLocalStorage(); // Atualiza o storage removendo as deletadas
+    salvarNoLocalStorage();
     atualizarProgresso();
     fecharModalExclusao();
 }
 
-// --- INICIALIZAÇÃO ---
-// Carrega os dados assim que o navegador ler o arquivo JS
 carregarDoLocalStorage();
